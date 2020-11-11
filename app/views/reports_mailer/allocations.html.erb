@@ -1,0 +1,10 @@
+<p>Relatório de apontamentos <%= @date %> em anexo </p>
+
+<% if @errors.count > 0 %>
+  <p>Erros encontrados:</p>
+  <ul>
+    <% @errors.each do |error| %>
+    <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>

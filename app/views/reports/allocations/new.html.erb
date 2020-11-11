@@ -1,0 +1,47 @@
+<div class="row">
+
+  <div class="d-md-none d-lg-block col-xl-3"></div>
+
+  <div class="ml-1 col-xl-6 col-md-12 mr-1 mb-4">
+
+    <div class="col-12 pr-3 pl-3">
+
+        <div class="kt-portlet kt-portlet--bordered">
+          <div class="kt-portlet__head">
+            <div class="kt-portlet__head-label">
+              <h3 class="kt-portlet__head-title mr-1">
+               Relatório
+              </h3>
+            </div>
+
+            <div class="kt-portlet__head-toolbar">
+              <div class="kt-portlet__head-actions">
+                <a href="<%= root_path %>" class="btn btn-sm btn-outline-info btn-elevate btn-circle btn-icon">
+                    <i class="la la-close"></i>
+                </a>
+            </div>
+          </div>
+
+          </div>
+          <div class="kt-portlet__body">
+            <%= form_for :ts, url: reports_allocations_path, html: {class:'kt-form'} do |f| %>
+            <div class="row">
+              <div class="col-3">
+                <label>Data inicial</label>
+                <input type="text" name="start_date" placeholder="MM/AAAA" class="form-control month-year-mask">
+              </div>
+              <div class="col-3">
+                <label>Data final</label>
+                <input type="text" name="end_date" placeholder="MM/AAAA" class="form-control month-year-mask">
+              </div>
+              <div class="col-4">
+                <button type="submit" data-disable-with="Enviando..." class="btn btn-outline-success float-right">ENVIAR</button>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>

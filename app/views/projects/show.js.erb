@@ -1,0 +1,6 @@
+<% if @validation_message.nil? %>
+  $('#projects').append("<%= j render partial:'project', object: @project %>");
+<% else %>
+  feedbackUpdateTS('warning','<%= @validation_message %>');
+<% end %>
+

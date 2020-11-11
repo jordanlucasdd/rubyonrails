@@ -1,0 +1,51 @@
+<div id="project-<%= ts.project.id %>" class="row" data-ts-id="<%= ts.id %>">
+
+
+<div class="kt-portlet kt-portlet--bordered">
+  <div class="kt-portlet__head">
+    <div class="kt-portlet__head-label">
+      <h3 class="kt-portlet__head-title">
+        <%= ts.project.name %>
+      </h3>
+    </div>
+    <div class="kt-portlet__head-toolbar">
+        <div class="kt-portlet__head-actions">
+            <button type="button" disabled="true" class="btn btn-sm  btn-elevate btn-circle btn-icon">
+                <i class="fa fa-history"></i>
+            </button>
+        </div>
+    </div>
+  </div>
+  <div class="kt-portlet__body">
+    
+    <%# form_for :ts, url: time_sheets_path, remote: true, class:'kt-form' do |f| %>
+        <input type="hidden" name="ts[project_id]" value="<%= ts.project.id %>">
+        <h5 class="text-dark">% de horas gastas: </h5>
+        <div class="form-group row">
+            <div class="col-lg-10 col-md-12 col-sm-12">
+                <div class="row align-items-center">
+                    <div class="col-3">
+                        <input type="text" disabled="true" class="form-control" name="ts[value]" id="value-<%= ts.project.id %>" value="<%= ts.percentage %>" placeholder="%">
+                    </div>
+                    <div class="col-7">
+                        <div id="nouislider-<%= ts.project.id %>" class="kt-nouislider kt-nouislider--handle-danger"></div>
+                    </div>
+                </div>
+                <span class="form-text text-dark mb-2">Alocação aguardando aprovação do gestor do projeto.</span>
+            </div>
+            <div class="col-lg-2 col-md-12">
+
+                <div class="alert-secondary p-2" role="alert">
+                    <div class="text-center" style="font-size: 1.2rem;" ><i class="fa fa-history"></i></div>
+                    <h6 class="text-center">Aguardando aprovação</h6>
+                </div>
+                <!-- <button type="submit" class="btn btn-outline-success float-right">ENVIAR</button> -->
+            </div>
+        </div>
+
+    <%# end %>
+    
+  </div>
+</div>
+
+</div>

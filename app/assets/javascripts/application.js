@@ -1,0 +1,12 @@
+//= require jquery
+//= require jquery_ujs
+//= require vendors/jquery.mask
+//= require vendors/jquery-maskmoney
+//= require vendors/select2/dist/js/select2
+//= require vendors/block-ui/jquery.blockUI
+//= require vendors/sweetalert2/dist/sweetalert2.all
+//= require app/client_api
+//= require app/messages
+//= require app/load_image_profile
+//= require controls
+//= require repeater

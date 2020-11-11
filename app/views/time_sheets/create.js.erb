@@ -1,0 +1,6 @@
+<% if @validation_message.nil? %>
+$('#project-<%= @ts.project.id %>').replaceWith('<%= j render partial: "show", locals:{ts: @ts} %>');
+showSuccessConfirmation("TimeSheet atualizado.");
+<% else %>
+  feedbackUpdateTS('warning','<%= @validation_message %>');
+<% end %>

@@ -1,0 +1,19 @@
+var allowSubmit = false;
+var verifyCallback = function (response) {
+  allowSubmit = true;
+  $(".recaptcha-box .recaptcha-msg").hide();
+};
+var onloadCallback = function () {
+  grecaptcha.render('recaptcha', {
+    'sitekey': '<%= APP_CONFIG::RECAPTCHA::SITE_KEY %>',
+    'callback': verifyCallback
+  });
+};
+
+$("#loginForm").on('submit', function () {
+  if (!allowSubmit) {
+    $(".recaptcha-box").addClass("has-error");
+    $(".recaptcha-box .recaptcha-msg").html("Nos diga que você não é um robo :)");
+    return false;
+  }
+});

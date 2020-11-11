@@ -1,0 +1,3 @@
+$(function () {
+  $('#signUpForm').validator();
+});

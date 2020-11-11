@@ -1,0 +1,95 @@
+<!-- begin:: Header -->
+<div id="kt_header" class="kt-header kt-grid__item  kt-header--fixed desktop" data-ktheader-minimize="on">
+  <div class="kt-header__top">
+      <div class="kt-container">
+
+        <!-- begin:: Brand -->
+        <div class="kt-header__brand   kt-grid__item" id="kt_header_brand">
+          <div class="kt-header__brand-logo">
+            <a href="<%= root_path %>">
+              <img alt="Logo" src="<%= asset_path 'logo_header.png' %>" height="33px;"  class="kt-header__brand-logo-default" />
+            </a>
+          </div>
+        </div>
+
+        <!-- end:: Brand -->
+
+        <!-- begin:: Header Topbar -->
+        <div class="kt-header__topbar kt-grid__item kt-grid__item--fluid hidden-xs hidden-sm">
+
+          <!--begin: User bar -->
+          <div class="kt-header__topbar-item kt-header__topbar-item--user hidden-xs hidden-sm">
+            <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px,0px">
+              <span class="kt-header__topbar-welcome">Olá,</span>
+              <span class="kt-header__topbar-username <%= @current_user.id %>"><%= @current_user.first_name %></span>
+              <img class="kt-hidden-xs" alt="<%= @current_user.first_name %>" src="<%= @current_user.avatar || asset_path('avatar-placeholder.png') %>" />
+              <span class="kt-header__topbar-icon kt-header__topbar-icon--brand kt-hidden">
+                <b><%= @current_user.first_name[0] %></b>
+              </span>
+            </div>
+            <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-xl">
+
+              <!--begin: Head -->
+              <div class="kt-user-card kt-user-card--skin-light kt-notification-item-padding-x">
+                <div class="kt-user-card__avatar">
+                  <img class="kt-hidden-" alt="<%= @current_user.first_name %>" src="<%= @current_user.avatar || asset_path('avatar-placeholder.png') %>" />
+
+                  <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
+                  <span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold kt-hidden"><%= @current_user.first_name[0] %></span>
+                </div>
+                <div class="kt-user-card__name">
+                  <%= @current_user.name %>
+                </div>
+                
+              </div>
+
+              <!--end: Head -->
+
+              <!--begin: Navigation -->
+              <div class="kt-notification">
+                <% if @current_user.is_admin? %>
+                <a href="<%= new_adjust_time_sheet_path %>" class="kt-notification__item">
+                  <div class="kt-notification__item-details">
+                    <div class="kt-notification__item-title kt-font-bold">
+                      Adequação de horas
+                    </div>
+                  </div>
+                </a>
+
+                <a href="<%= new_reports_allocation_path %>" class="kt-notification__item">
+                  <div class="kt-notification__item-details">
+                    <div class="kt-notification__item-title kt-font-bold">
+                      Relatório
+                    </div>
+                  </div>
+                </a>
+
+                <a href="<%= sync_projects_path %>" class="kt-notification__item">
+                  <div class="kt-notification__item-details">
+                    <div class="kt-notification__item-title kt-font-bold">
+                      Sincronizar projetos
+                    </div>
+                  </div>
+                </a>
+                <% end %>
+
+                
+                
+
+                <div class="kt-notification__custom">
+                  <%= link_to "Sair", logout_path, method: :delete, class: "btn btn-label-brand btn-sm btn-bold" %>
+                </div>
+              </div>
+
+              <!--end: Navigation -->
+            </div>
+          </div>
+
+          <!--end: User bar -->
+        </div>
+
+        <!-- end:: Header Topbar -->
+      </div>
+  </div>
+</div>
+<!-- end:: Header -->

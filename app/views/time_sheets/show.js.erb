@@ -1,0 +1,6 @@
+<% if @validation_message.nil? %>
+$('#time-sheets').append("<%= j render partial:'time_sheets/time_sheet', object: @ts %>");
+slider(<%= @ts.project.id %>,<%= @ts.percentage.to_i %>,<%= @ts.status %>);
+<% else %>
+  feedbackUpdateTS('warning','<%= @validation_message %>');
+<% end %>

@@ -1,0 +1,75 @@
+<% if @current_user.is_manager? %>
+  <div class="kt-portlet kt-portlet--height-fluid">
+    <div class="kt-portlet__head">
+      <div class="kt-portlet__head-label">
+        <h3 class="kt-portlet__head-title">
+          Aguardando sua aprovação
+        </h3>
+      </div>
+      <div class="kt-portlet__head-toolbar">
+        <a href="<%= new_adjust_time_sheet_path %>" class="btn btn-outline-info btn btn-sm btn-bold">Adequação de horas</a>
+      </div>
+    </div>
+    <div class="kt-portlet__body">
+      <div class="tab-content">
+        <div class="tab-pane active" id="tab-waiting-approval">
+          <div class="kt-widget31" id="waiting-approval">
+            <% unless @timesheets_to_aprroval.empty? %>
+            <%= render partial: 'approve_time_sheets/ts', collection: @timesheets_to_aprroval %>
+            <% end %>
+          </div>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+  <% if @current_user.is_manager? %>
+  <div class="kt-portlet kt-portlet--height-fluid">
+    <div class="kt-portlet__head">
+      <div class="kt-portlet__head-label">
+        <h3 class="kt-portlet__head-title">
+          Aprovadas recentemente
+        </h3>
+      </div>
+      <div class="kt-portlet__head-toolbar">
+        <% if @current_user.is_manager? %>
+        <a href="<%= adjust_time_sheets_path %>" class="btn btn-outline-info btn btn-sm btn-bold">Acompanhamento de horas</a>
+        <% end %>
+      </div>
+    </div>
+    <div class="kt-portlet__body">
+      <div class="tab-content">
+        <div class="tab-pane active" id="kt_widget31_tab1_content">
+          <div class="kt-widget31" id="waiting-approval">
+            <% unless  @approveds_by_me.empty? %>
+            <ul class="nav nav-pills nav-fill" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#tab-approved-by-project">Por projetos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tab-approved-by-person">Por pessoas</a>
+              </li>
+            </ul>
+
+            <div class="tab-content">
+              <div class="tab-pane active" id="tab-approved-by-project" role="tabpanel">
+                <%= render partial: 'approve_time_sheets/by_project' %>
+              </div>
+
+              <div class="tab-pane" id="tab-approved-by-person" role="tabpanel">
+                <%= render partial: 'approve_time_sheets/by_person' %>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+  <% end %>
+
+

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>GFP - E L O G R O U P</title>
+    <meta name="description" content="Latest updates and statistic charts">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+
+    <!--begin::Web font -->
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+    <script>
+      WebFont.load({
+            google: {"families":["Poppins:300,400,500,600,700","Roboto:300,400,500,600,700","Asap+Condensed:500"]},
+            active: function() {
+                sessionStorage.fonts = true;
+            }
+          });
+        </script>
+
+    <!--end::Web font -->
+    
+
+    
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!--begin::Global Theme Styles -->
+    <%= stylesheet_link_tag 'login', media: 'all', 'data-turbolinks-track': 'reload' %>
+<!--     <link href="assets/demo/base/style.bundle.css" rel="stylesheet" type="text/css" /> -->
+
+    <!--RTL version:<link href="assets/demo/base/style.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
+
+    <!--end::Global Theme Styles -->
+
+    <!--RTL version:<link href="assets/vendors/custom/fullcalendar/fullcalendar.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
+
+    <!--end::Page Vendors Styles -->
+    <link rel="shortcut icon" href="<%= asset_path 'favicon.png' %>" />
+    <%= csrf_meta_tag %>
+  </head>
+
+  <!-- end::Head -->
+
+  <!-- begin::Body -->
+  <!-- begin::Body -->
+  <body class="kt-subheader--fixed kt-subheader--enabled kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
+
+    <!-- begin:: Page -->
+    <div class="kt-grid kt-grid--ver kt-grid--root">
+      <div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v3 kt-login--signin" id="kt_login">
+        <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" style="background-image: url(<%= asset_path 'bg-login.jpg' %>);">
+          <div class="kt-grid__item kt-grid__item--fluid kt-login__wrapper">
+            <div class="kt-login__container">
+                  <%= render partial: 'shared/flash' %>
+              <div class="kt-login__logo">
+                <a href="#">
+                  <img src="<%= asset_path 'logo_header.png' %>" height="45px;">
+                </a>
+              </div>
+              <div class="kt-login__signin">
+                <div class="kt-login__head">
+                  <h2 class="kt-login__icon"><i class="flaticon-calendar-with-a-clock-time-tools"></i></h2>
+                  <h3 class="kt-login__title">
+                    TIMESHEET
+                  </h3>
+                </div>
+                <form class="kt-form" action="">
+                  <div class="kt-login__actions">
+                    <a href="/auth/google_oauth2/" class="btn btn-warning btn-lg login__btn">ENTRAR</a>
+                    <!-- <a href="/auth/google_oauth2/" class="btn btn-brand btn-elevate login__btn">ENTRAR</a> -->
+                  </div>
+                </form>
+              </div>
+              
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- end:: Page -->
+
+    
+    
+  </body>
+
+  <!-- end::Body -->
+
+  <!-- end::Body -->
+</html>

@@ -1,0 +1,32 @@
+<% bread_crumb ||= [] %>
+
+<div class="m-subheader">
+
+    <div class="d-flex align-items-center">
+      <div class="mr-auto">
+                <h3 class="m-subheader__title m-subheader__title--separator"><%= @layout.bread_crumb_name(bread_crumb,0) %></h3>
+                <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+                  <li class="m-nav__item m-nav__item--home">
+                    <a href="<%= root_path %>" class="m-nav__link m-nav__link--icon">
+                      <i class="m-nav__link-icon la la-home"></i>
+                    </a>
+                  </li>
+                  <li class="m-nav__separator">-</li>
+                  <% bread_crumb.each_with_index do |item,index| %>
+                    <% if index > 0 %>
+                    <li class="m-nav__item">
+                      <a href="<%= @layout.bread_crumb_link(item,index) %>" class="m-nav__link">
+                        <span class="m-nav__link-text"><%= @layout.bread_crumb_name(bread_crumb,index) %></span>
+                      </a>
+                    </li>
+                    <% if index < (bread_crumb.count - 1) %>
+                      <li class="m-nav__separator">-</li>
+                    <% end %>
+                    <% end %>
+                  <% end %>
+                  
+                </ul>
+              </div>
+    </div>
+
+  </div>

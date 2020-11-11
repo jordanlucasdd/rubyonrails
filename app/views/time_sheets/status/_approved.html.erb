@@ -1,0 +1,53 @@
+<div id="project-<%= ts.project.id %>" class="row" data-ts-id="<%= ts.id %>">
+
+
+<div class="kt-portlet kt-portlet--bordered">
+  <div class="kt-portlet__head">
+    <div class="kt-portlet__head-label">
+      <h3 class="kt-portlet__head-title">
+        <%= ts.project.name %>
+      </h3>
+    </div>
+    <div class="kt-portlet__head-toolbar">
+        <div class="kt-portlet__head-actions">
+            <button type="button" disabled="true" class="btn btn-sm  btn-elevate btn-circle btn-icon">
+                <i class="fa fa-check"></i>
+            </button>
+        </div>
+    </div>
+  </div>
+  <div class="kt-portlet__body">
+    <div class="col-lg-11">
+    <div class="kt-widget24">
+        <div class="kt-widget24__details">
+            <div class="kt-widget24__info">
+                <h4 class="kt-widget24__title">
+                    APROVADO
+                </h4>
+                <span class="kt-widget24__desc">
+                    Por: <%= ts.project.manager.name %>
+                </span>
+            </div>
+            <span class="kt-widget24__stats kt-font-success">
+                <div class="text-center text-success" style="font-size: 2rem;" ><i class="fa fa-check"></i></div>
+            </span>
+        </div>
+        <div class="progress progress-lg">
+            <div class="progress-bar kt-bg-success" role="progressbar" style="width: <%= ts.percentage %>%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div class="kt-widget24__action">
+            <span class="kt-widget24__change">
+                <h4><%= ts.hours %> hs</h4>
+            </span>
+            <span class="kt-widget24__number">
+                <h4><%= ts.percentage %>%</h4>
+            </span>
+        </div>
+    </div>
+    </div>
+   
+    
+  </div>
+</div>
+
+</div>

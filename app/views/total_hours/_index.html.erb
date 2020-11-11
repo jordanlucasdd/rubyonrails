@@ -1,0 +1,61 @@
+<div class="kt-portlet">
+  <div class="kt-portlet__head">
+      <div class="kt-portlet__head-label">
+        <h4 class="kt-portlet__head-title">
+          Total de horas apontadas e aprovadas em <%= @month %>
+        </h4>
+      </div>
+      <div class="kt-portlet__head-toolbar">
+      </div>
+    </div>
+      
+
+                <div class="kt-portlet__body  kt-portlet__body--fit" id="total-projects">
+
+      <div class="row mb-2">
+        <div class="col-md-12">
+          <div class="mt-3 ml-4 mr-4">
+          <h4><%= @total_hours %>%</h4>
+          <div class="progress kt-progress--lg">
+            <div class="progress-bar kt-bg-info" role="progressbar" style="width: <%= @total_hours %>%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          
+          </div>
+        </div>
+      </div>
+
+
+                  <div class="owl-carousel mt-2">
+                    <% @approveds.each do |ts| %>
+                  <div class="row carousel">
+                    <div class="col-md-12 col-xl-10 mb-4" style="border: 1px solid #ccc; height: 130px;">
+
+                      <!--begin::Total Profit-->
+                      <div class="kt-widget24">
+                        <div class="kt-widget24__details">
+                          <div class="kt-widget24__info">
+                            <h6><%= ts.project.name %></h6>
+                          </div>
+                        </div>
+                        <div class="progress progress--sm">
+                          <div class="progress-bar kt-bg-success" role="progressbar" style="width: <%= ts.percentage %>%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="kt-widget24__action">
+                          <span class="kt-widget24__change">
+                            <%= ts.hours.to_i %>hs
+                          </span>
+                          <span class="kt-widget24__number">
+                            <%= ts.percentage %> %
+                          </span>
+                        </div>
+                      </div>
+
+                      <!--end::Total Profit-->
+                    </div>
+                   
+                  </div>
+                  <% end %>
+                </div>
+                </div>
+              </div>
+

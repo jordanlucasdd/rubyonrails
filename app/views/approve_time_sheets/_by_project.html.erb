@@ -1,0 +1,23 @@
+
+<% @approveds_by_project.each_with_index do |data,index| %>
+
+<div class="accordion" id="accordion-aprroveds-by-project">
+  <div class="card m-accordion-card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link" style="width: 100%; text-align: left;" type="button" data-toggle="collapse" data-target="#approveds_by_project-<%= index %>" aria-expanded="true" aria-controls="approveds_by_project-<%= index %>">
+          <span class="m-accordion__item-title"><%= data[:project].name %></span>
+          <span class="m-accordion__item-mode float-right"><i class="fa fa-angle-down"></i></span>
+        </button>
+      </h2>
+    </div>
+
+    <div id="approveds_by_project-<%= index %>" class="collapse" aria-labelledby="headingOne" data-parent="#accordion-aprroveds-by-project">
+      <div class="card-body">
+        <%= render partial: 'approve_time_sheets/approved_user', collection: data[:timesheets] %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end %>

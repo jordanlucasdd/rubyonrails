@@ -1,0 +1,50 @@
+<div class="col-xl-8 col-md-12">
+  <div class="kt-portlet kt-portlet--mobile">
+    <div class="kt-portlet__head">
+      <div class="kt-portlet__head-label">
+        <h3 class="kt-portlet__head-title">
+          Acompanhamento de alocações
+        </h3>
+      </div>
+
+      <div class="kt-portlet__head-toolbar">
+        <div class="kt-portlet__head-actions">
+          <a href="<%= root_path %>" class="btn btn-sm btn-outline-info btn-elevate btn-circle btn-icon">
+              <i class="la la-close"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  <div class="kt-portlet__body">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="kt-scroll mb-3" data-scroll-x="true" data-scroll="true">
+          <div style="width: <%= 100 * @dates.count %>px">
+            <% @dates.each do |dt| %>
+              <a href="<%= adjust_time_sheets_path({month: dt.split('/')[0], year: dt.split('/')[1]}) %>" class="btn btn-outline-info btn-sm btn-date <%= 'active' if dt == @current_date %> ">
+                <%= dt %>
+              </a>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+      <%= render partial: 'adjust_time_sheets/ts', collection: @data %>
+      </div>
+    </div>
+
+   </div>
+  </div>
+</div>
+
+
+
+<% content_for :javascript do %>
+  <%= javascript_include_tag 'app/adjust_ts/index.js', 'data-turbolinks-track': 'reload' %>
+<% end %>
+

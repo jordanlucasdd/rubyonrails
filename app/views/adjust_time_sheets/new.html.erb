@@ -1,0 +1,110 @@
+<div class="row">
+
+  <div class="d-md-none d-lg-block col-xl-3"></div>
+
+  <div class="ml-1 col-xl-6 col-md-12 mr-1 mb-4">
+
+    <div class="col-12 pr-3 pl-3">
+
+
+        <div id="ts-<%= @ts.id || 0 %>" class="row">
+
+
+        <div class="kt-portlet kt-portlet--bordered">
+          <div class="kt-portlet__head">
+            <div class="kt-portlet__head-label">
+              <h3 class="kt-portlet__head-title mr-1">
+               Adequar horas 
+              </h3>
+            </div>
+
+            <div class="kt-portlet__head-toolbar">
+              <div class="kt-portlet__head-actions">
+                <a href="<%= root_path %>" class="btn btn-sm btn-outline-info btn-elevate btn-circle btn-icon">
+                    <i class="la la-close"></i>
+                </a>
+            </div>
+          </div>
+
+          </div>
+          <div class="kt-portlet__body">
+            
+            <%= form_for :ts, url: adjust_time_sheets_path, html: {id:'form-ts', class:'kt-form'} do |f| %>
+                <input type="hidden" name="id" value="<%= @ts.id %>">
+                <div class="form-group row">
+                  <div class="col-lg-10 col-md-12 col-sm-12">
+                  <label>Projeto:</label>
+                  <select class="form-control m-select2" id="ts_project_id" <%= @form.required %> name="ts[project_id]">
+                    <option value="">Selecione...</option>
+                    <%= @form.options_for_select(@projects,@ts.project_id) %>
+                  </select>
+                  <div class="help-block with-errors text-danger"></div>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-lg-10 col-md-12 col-sm-12">
+                  <label>Colaborador:</label>
+                  <select class="form-control m-select2" id="ts_user_id" <%= @form.required %> name="ts[user_id]">
+                    <option value="">Selecione...</option>
+                    <%= @form.options_for_select(@users,@ts.user_id) %>
+                  </select>
+                  <div class="help-block with-errors text-danger"></div>
+                  </div>
+                </div>
+
+                
+                <div class="form-group row">
+                  <div class="col-lg-2 col-md-6 col-sm-6">
+                    <label>Mês/Ano:</label>
+                    <input type="text" class="form-control month-year-mask-short" placeholder="DD/AA" <%= @form.required %> name="ts[date]" value='<%= "#{@ts.month}/#{@ts.year.to_s[2..3]}" if @ts.month %>'>
+                    <div class="help-block with-errors text-danger"></div>
+                  </div>
+                </div>
+
+                <h6 class="text-dark"> Informe o % de horas gastas: </h6>
+                <div class="form-group row">
+                    <div class="col-lg-10 col-md-12 col-sm-12">
+                        <div class="row align-items-center">
+                            <div class="col-3">
+                                <input type="text" class="form-control" name="ts[value]" <%= @form.required %> id="value-<%= @ts.id || 0 %>" value="<%= @ts.percentage %>" placeholder="%">
+                            </div>
+                            <div class="col-7">
+                                <div id="nouislider-<%= @ts.id || 0 %>" class="kt-nouislider kt-nouislider--handle-danger"></div>
+                            </div>
+                        </div>
+                        <div class="help-block with-errors text-danger"></div>
+                        <span class="form-text text-dark mb-2">Arraste a barra ou informe valores múltiplos de 5.</span>
+                    </div>
+                    <div class="col-lg-2 col-md-12">
+                        <button type="submit" class="btn btn-outline-success float-right">ENVIAR</button>
+                    </div>
+                </div>
+
+            <% end %>
+            
+          </div>
+        </div>
+
+        </div>
+
+
+
+
+      </div>
+  </div>
+</div>
+
+
+<% content_for :javascript do %>
+  <%= javascript_include_tag 'vendors/validator.js'  %>
+  <%= javascript_include_tag 'vendors/nouislider/distribute/nouislider.js', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'app/adjust_ts/new.js', 'data-turbolinks-track': 'reload' %>
+  <script type="text/javascript">
+    
+    jQuery(document).ready(function() {
+       slider(<%= @ts.id || 0 %>,<%= @ts.percentage.to_i %>);
+    });
+  </script>
+<% end %>
+

@@ -1,0 +1,53 @@
+<div id="project-<%= ts.project.id %>" class="row item">
+
+
+<div class="kt-portlet kt-portlet--bordered alert-outline-danger">
+  <div class="kt-portlet__head">
+    <div class="kt-portlet__head-label">
+      <h3 class="kt-portlet__head-title text-danger">
+        <%= ts.project.name %>
+      </h3>
+    </div>
+    <div class="kt-portlet__head-toolbar">
+        <div class="kt-portlet__head-actions">
+            <button type="button" onclick="cancel(<%= ts.id %>,<%= ts.project.id %>);" class="btn btn-sm btn-outline-danger btn-elevate btn-circle btn-icon">
+                <i class="la la-close"></i>
+            </button>
+        </div>
+    </div>
+  </div>
+  <div class="kt-portlet__body">
+    <!-- <h4 class="text-center text-danger">RECUSADO</h4> -->
+
+    
+    <h5 class="text-danger text-center">RECUSADO <i class="flaticon-warning"></i></h5>
+
+    <%= form_for :ts, url: time_sheets_path, remote: true, class:'kt-form' do |f| %>
+        <input type="hidden" name="ts[project_id]" value="<%= ts.project.id %>">
+        <h6> Informe o % de horas gastas: </h6>
+        <div class="form-group row">
+            <div class="col-lg-8 col-md-12 col-sm-12">
+                <div class="row align-items-center">
+                    <div class="col-3">
+                        <input type="text" class="form-control" name="ts[value]" id="value-<%= ts.project.id %>" value="<%= ts.percentage %>" placeholder="%">
+                    </div>
+                    <div class="col-9">
+                        <div id="nouislider-<%= ts.project.id %>" class="kt-nouislider kt-nouislider--handle-danger"></div>
+                    </div>
+                </div>
+                <span class="form-text text-muted mb-2">Arraste a barra ou informe valores múltiplos de 5.</span>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <button type="submit" data-disable-with="Enviando..." class="btn btn-outline-success float-right">REENVIAR</button>
+                <a href="javascript:cancel(<%= ts.id %>,<%= ts.project.id %>)" class="btn btn-outline-danger float-right mr-3">
+                    CANCELAR
+                </a>
+            </div>
+        </div>
+
+    <% end %>
+    
+  </div>
+</div>
+
+</div>

@@ -1,0 +1,27 @@
+<% approved = approved_project %>
+<div class="kt-widget31__item" id="ts-<%= approved.id %>">
+  <div class="kt-widget31__content" style="width: 70%">
+    <!-- <div class="kt-widget31__pic">
+      <img src="<%= asset_path('avatar-placeholder.png') %>" class="user-avatar" data-user="<%= approved.user.id %>" alt="">
+    </div> -->
+    <div class="kt-widget31__info">
+      <a href="#" class="kt-widget31__username">
+        <%= approved.project.name %>
+      </a>
+    </div>
+  </div>
+  <div class="kt-widget31__content">
+    <div class="kt-widget31__progress">
+      <a href="#" class="kt-widget31__stats">
+        <span><%= approved.percentage %>%</span>
+        <span><%= approved.hours.to_i %> hs</span>
+      </a>
+      <div class="progress progress-sm">
+        <div class="progress-bar bg-success" role="progressbar" style="width: <%= approved.percentage %>%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </div>
+    <button onclick="disapprove_with_confirm(<%= approved.id %>)" class="btn-label-danger btn btn-sm btn-bold mr-3">
+      <i class="la la-close"></i>
+    </button>
+  </div>
+</div>

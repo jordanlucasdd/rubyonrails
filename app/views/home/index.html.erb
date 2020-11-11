@@ -1,0 +1,44 @@
+<div class="row">
+
+  <div class="d-md-none d-lg-block col-xl-3"></div>
+
+  <div class="ml-1 col-xl-6 col-md-12 mr-1 mb-4">
+
+    <div class="col-12 pr-3 pl-3">
+
+        <div id="dashboard">
+        <%= render partial:'total_hours/index' %>  
+        </div>
+
+        <div id="waiting_approval">
+        <%= render partial:'approve_time_sheets/index' %>
+        </div>
+
+        <div id="time-sheets">
+        <%= render partial:'time_sheets/time_sheet', collection: @timesheets %>
+        </div>
+        
+        <%= render partial:'search' %>
+    </div>
+
+  </div>
+
+  <div class="d-md-none d-lg-block col-xl-3"></div>
+
+</div>
+
+
+<% content_for :javascript do %>
+  <%= javascript_include_tag 'vendors/nouislider/distribute/nouislider.js', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'vendors/owl.carousel/dist/owl.carousel.js', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'app/home/projects.js', 'data-turbolinks-track': 'reload' %>
+  <script type="text/javascript">
+    
+    jQuery(document).ready(function() {
+      <% @timesheets.each do |ts| %>
+       slider(<%= ts.project.id %>,<%= ts.percentage.to_i %>,'<%= ts.status %>');
+      <% end %>
+    });
+  </script>
+<% end %>
+

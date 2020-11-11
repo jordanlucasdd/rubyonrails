@@ -1,0 +1,5 @@
+<% if time_sheet.is_opened? %>
+<%= render partial: 'time_sheets/form', locals: {ts: time_sheet} %>
+<% else %>
+<%= render partial: 'time_sheets/show', locals: {ts: time_sheet} %>
+<% end %>
